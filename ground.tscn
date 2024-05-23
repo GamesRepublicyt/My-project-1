@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct0i47rtrx026"]
+
+[ext_resource type="Texture2D" uid="uid://bdtloemaffx7r" path="res://models/textures/cobblestone_03_disp_4k.png" id="1_xw5n2"]
+[ext_resource type="Texture2D" uid="uid://dhwmsc8hft77b" path="res://models/textures/cobblestone_03_arm_4k.jpg" id="2_d7ssk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t88tm"]
+albedo_texture = ExtResource("1_xw5n2")
+albedo_texture_force_srgb = true
+normal_enabled = true
+normal_texture = ExtResource("2_d7ssk")
+uv1_scale = Vector3(0.782, 0.782, 0.782)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.707106
+uv1_world_triplanar = true
+uv2_offset = Vector3(0.185, 0.47, 0)
+uv2_triplanar_sharpness = 1.6245
+uv2_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_8vw5f"]
+material = SubResource("StandardMaterial3D_t88tm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_marlc"]
+
+[node name="ground" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0133898)
+mesh = SubResource("BoxMesh_8vw5f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_marlc")

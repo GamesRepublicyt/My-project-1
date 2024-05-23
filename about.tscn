@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://cp56bkmuhesyx"]
+
+[ext_resource type="Script" path="res://link.gd" id="1_f64p4"]
+[ext_resource type="Texture2D" uid="uid://b5uk4be3xk43w" path="res://PNG/How to play_20240513_002248_0000.png" id="2_4tuxl"]
+[ext_resource type="AudioStream" uid="uid://xs8eur30joxh" path="res://audio/The_Game_Show_Theme_Music(256k).mp3" id="3_7w3b0"]
+[ext_resource type="AudioStream" uid="uid://b0lrs224h34ig" path="res://audio/Button_Sound_Effects__Copyright_Free_(256k)-mc.mp3" id="4_xhpbt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_llk7s"]
+bg_color = Color(0.148202, 0.322597, 0, 1)
+border_width_bottom = 20
+border_color = Color(0.238415, 0.443742, 0, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b1rqw"]
+
+[sub_resource type="Theme" id="Theme_6oplc"]
+Button/styles/normal = SubResource("StyleBoxFlat_llk7s")
+Button/styles/pressed = SubResource("StyleBoxFlat_b1rqw")
+
+[node name="about" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f64p4")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4tuxl")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+offset_right = 216.0
+offset_bottom = 91.0
+theme = SubResource("Theme_6oplc")
+theme_override_font_sizes/font_size = 60
+text = "back"
+
+[node name="YouTube" type="LinkButton" parent="."]
+offset_left = 576.0
+offset_top = 896.0
+offset_right = 874.0
+offset_bottom = 951.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "GamesRepublic"
+uri = "https://youtube.com/@games_republic?si=AOzMgS5K2DQlDUkX"
+
+[node name="insta Id" type="LinkButton" parent="YouTube"]
+layout_mode = 0
+offset_top = -64.0
+offset_right = 342.0
+offset_bottom = -9.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "matthew_michael"
+uri = "https://www.instagram.com/_matthew__michael?igsh=cDlzM3J1dWoyNWN5"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7w3b0")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xhpbt")
+pitch_scale = 3.55
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]

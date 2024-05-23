@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://d14xg3e4bdj1d"]
+
+[ext_resource type="Script" path="res://loading.gd" id="1_o02hq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5oikr"]
+bg_color = Color(0.946252, 0, 0.27214, 1)
+
+[sub_resource type="Theme" id="Theme_5rs6m"]
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_5oikr")
+
+[node name="load" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o02hq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -45.5
+offset_right = 117.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.31437, 0.303029, 0.190546, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 66
+text = "loading"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -444.0
+offset_top = -27.0
+offset_right = 444.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_5rs6m")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 0.735316, 0.254174, 1)
+value = 78.0

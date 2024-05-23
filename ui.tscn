@@ -1,0 +1,123 @@
+[gd_scene load_steps=9 format=3 uid="uid://btjswfcc11k5w"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_8s10n"]
+[ext_resource type="Texture2D" uid="uid://cierv44rtryw8" path="res://PNG/sky Runner_20240513_184832_0000.png" id="2_5y1as"]
+[ext_resource type="AudioStream" uid="uid://xs8eur30joxh" path="res://audio/The_Game_Show_Theme_Music(256k).mp3" id="3_pdifi"]
+[ext_resource type="AudioStream" uid="uid://b0lrs224h34ig" path="res://audio/Button_Sound_Effects__Copyright_Free_(256k)-mc.mp3" id="4_d3l8l"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_al5ks"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dutq7"]
+bg_color = Color(0.349343, 0.701243, 0, 1)
+border_width_left = 9
+border_width_top = 9
+border_width_right = 9
+border_width_bottom = 9
+border_color = Color(0.22806, 0.336017, 0, 1)
+border_blend = true
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+shadow_size = 17
+shadow_offset = Vector2(0.108, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqmxd"]
+bg_color = Color(0.257818, 0.355509, 2.40654e-07, 1)
+
+[sub_resource type="Theme" id="Theme_3v43j"]
+Button/styles/normal = SubResource("StyleBoxFlat_dutq7")
+Button/styles/pressed = SubResource("StyleBoxFlat_bqmxd")
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8s10n")
+
+[node name="Panel" type="TextureRect" parent="Control"]
+material = SubResource("CanvasItemMaterial_al5ks")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5y1as")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 72.0
+offset_top = -260.0
+offset_right = 292.0
+offset_bottom = -105.0
+grow_vertical = 2
+theme = SubResource("Theme_3v43j")
+theme_override_colors/font_focus_color = Color(0.421455, 0.63666, 0.56874, 1)
+theme_override_colors/font_disabled_color = Color(0.776092, 0.776092, 0.776092, 1)
+theme_override_colors/font_outline_color = Color(0.633828, 0.633828, 0.633828, 1)
+theme_override_colors/icon_normal_color = Color(0, 0.687158, 0.671464, 1)
+theme_override_colors/icon_pressed_color = Color(0.56416, 1, 0.53446, 1)
+theme_override_colors/icon_hover_color = Color(0, 0.876939, 0.647601, 1)
+theme_override_font_sizes/font_size = 100
+text = "play"
+
+[node name="EXIT" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 72.0
+offset_top = -68.0
+offset_right = 299.0
+offset_bottom = 87.0
+grow_vertical = 2
+theme = SubResource("Theme_3v43j")
+theme_override_colors/font_focus_color = Color(0.421455, 0.63666, 0.56874, 1)
+theme_override_colors/font_disabled_color = Color(0.776092, 0.776092, 0.776092, 1)
+theme_override_colors/font_outline_color = Color(0.633828, 0.633828, 0.633828, 1)
+theme_override_colors/icon_normal_color = Color(0, 0.687158, 0.671464, 1)
+theme_override_colors/icon_pressed_color = Color(0.56416, 1, 0.53446, 1)
+theme_override_colors/icon_hover_color = Color(0, 0.876939, 0.647601, 1)
+theme_override_font_sizes/font_size = 97
+text = "Quit"
+
+[node name="about" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 72.0
+offset_top = 124.0
+offset_right = 302.0
+offset_bottom = 252.0
+grow_vertical = 2
+theme = SubResource("Theme_3v43j")
+theme_override_colors/font_focus_color = Color(0.421455, 0.63666, 0.56874, 1)
+theme_override_colors/font_disabled_color = Color(0.776092, 0.776092, 0.776092, 1)
+theme_override_colors/font_outline_color = Color(0.633828, 0.633828, 0.633828, 1)
+theme_override_colors/icon_normal_color = Color(0, 0.687158, 0.671464, 1)
+theme_override_colors/icon_pressed_color = Color(0.56416, 1, 0.53446, 1)
+theme_override_colors/icon_hover_color = Color(0, 0.876939, 0.647601, 1)
+theme_override_font_sizes/font_size = 62
+text = "ABOUT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pdifi")
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_d3l8l")
+pitch_scale = 2.95
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
+[connection signal="pressed" from="Control/EXIT" to="Control" method="_on_exit_pressed"]
+[connection signal="pressed" from="Control/about" to="Control" method="_on_about_pressed"]
